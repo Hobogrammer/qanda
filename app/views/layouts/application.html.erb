@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Qanda</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="flash">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
+<!--
+<div class="nav">
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Questions", questions_path %></li>
+    <% if !current_user %>
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+    <% else %>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+    <% end %>
+  </ul>
+</div>
+-->
+<table class="nav">
+      <tr>
+        <td><%= link_to "Home", root_path %></td>
+        <td><%= link_to "Questions", questions_path %></td>
+      <% if !current_user %>
+          <td><%= link_to "Sign In", new_user_session_path %></td>
+        <% else %>
+          <td><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></td>
+        <% end %>
+      </tr>
+</table>
+
+<%= yield %>
+
+</body>
+</html>
