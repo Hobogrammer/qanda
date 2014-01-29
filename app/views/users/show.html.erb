@@ -1,4 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<h2> User Name: <%= @user.email %></h2>
+
+<div id="contributions">
+  <table>
+    <thead>
+      <tr>
+        <th><strong>Question<strong></th>
+        <th>View</th>
+        <th>Change</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.questions.each do |question| %>
+        <tr>
+          <td><%= question.question %> </td>
+          <td><%= link_to 'Show', question %></td>
+          <td><%= link_to 'Edit', edit_question_path(question) %></td>
+          <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

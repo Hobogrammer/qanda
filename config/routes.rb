@@ -1,6 +1,6 @@
 Qanda::Application.routes.draw do
   devise_for :users
-  #resources :usesrs
+  resources :users
   resources :questions
 
   # Devise routes

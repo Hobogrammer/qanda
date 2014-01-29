@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        current_user.questions << @question
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question }
       else
@@ -43,6 +44,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
+        current_user.questions << @question
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,6 +72,8 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params[:question]
+      #params[:question]
+      params.require(:question).permit(:question, :answer)
+      #params.require(:post).permit(:title, :body, (:published if PostPolicy.new(current_user, @post).publish?))
     end
 end

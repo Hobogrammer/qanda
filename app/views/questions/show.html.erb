@@ -1,4 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+  <table class="qanda">
+    <thead>
+      <tr>
+        <th><strong>Question<strong></th>
+        <th><strong>Answer<strong></th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <td><%= @question.question %> </td>
+          <td><%= @question.answer %> </td>
+        </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+
+
+  <p><strong>Contributors:</strong></p>
+  <div class="contributors">
+    <ul>
+      <% @question.users.each do |user|%>
+        <li><%= user.email %></li>
+      <% end %>
+    </ul>
+  </div>
+
+
+
 <%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Back', questions_path %> |
+<%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+

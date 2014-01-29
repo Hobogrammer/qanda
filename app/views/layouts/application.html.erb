@@ -25,9 +25,10 @@
   </ul>
 </div>
 -->
+
 <table class="nav">
       <tr>
-        <td><%= link_to "Home", root_path %></td>
+        <td><%= link_to "Users", users_path %></td>
         <td><%= link_to "Questions", questions_path %></td>
       <% if !current_user %>
           <td><%= link_to "Sign In", new_user_session_path %></td>
